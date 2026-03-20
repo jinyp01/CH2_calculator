@@ -1,10 +1,13 @@
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-
+        Calculator calculator = new Calculator();
+        ArrayList<Integer> arrayList;
 
 
         while(true){
@@ -23,16 +26,22 @@ public class Main {
 
             int result = 0;
             if (op.charAt(0) == '+') {
-                result = num1 + num2;
+                result = calculator.plus(num1, num2);
             } else if (op.charAt(0) == '-') {
-                result = num1 - num2;
+                result = calculator.minus(num1, num2);
             } else if (op.charAt(0) == '*') {
-                result = num1 * num2;
+                result = calculator.multifly(num1, num2);
             } else if (op.charAt(0) == '/') {
                 if(num2 == 0) {
                     System.out.println("나눗셈 연산에서 분모가 0이 될 수 없습니다.");
                 }
-                result = num1 / num2;
+                result = calculator.divide(num1, num2);
+            } else if (op.equals("delete")) {
+                arrayList = calculator.getResults();
+                System.out.println("다음 result 가 삭제됩니다 : " + arrayList.get(0));
+                arrayList.remove(0);
+                calculator.setResults(arrayList);
+                continue;
             } else if (op.equals("exit")) {
                 break;
             } else {
@@ -41,6 +50,7 @@ public class Main {
             }
 
             System.out.println("결과는 : " + result);
+            calculator.setResult(result);
         }
     }
 }
