@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+﻿import java.util.ArrayList;
 import java.util.Collection;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -20,11 +20,18 @@ public class Main {
 
         while(true){
             System.out.print("0 또는 양수 두 개를 입력하시오 : ");
-            num1 = scanner.nextDouble();
-            num2 = scanner.nextDouble();
+            try {
+                num1 = scanner.nextDouble();
+                num2 = scanner.nextDouble();
+            } catch (InputMismatchException e) {
+                System.out.println("잘못된 입력입니다. ");
+                scanner.nextLine();
+                // 잘못된 입력이었을 때 한줄 비워서 입력값에
+                // 오류메시지가 들어가는 현상 막아주기
+                continue;
+            }
             runablecalculate.setNum1(num1);
             runablecalculate.setNum2(num2);
-
 
 
             if (num1 < 0 || num2 < 0){
