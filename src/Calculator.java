@@ -2,9 +2,19 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 
+// step2 -> step3 로 넘어가면서 ArithmeticCalculator 클래스를 새로 작성하였고,
+// 이 클래스는 step3에서는 사용하지 않습니다.
+
+
+
 public class Calculator {
 
+
+
     private ArrayList<Integer> results = new ArrayList<>();
+
+
+
 
 
     // 생성자
